@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteBase /
+
+# Админ-панель
+RewriteRule ^admin/?$ /wol/admin/index.php [L]
+RewriteRule ^admin/computers/?$ /wol/admin/manage_pcs.php [L]
+RewriteRule ^admin/users/?$ /wol/admin/manage_users.php [L]
+RewriteRule ^admin/add-user/?$ /wol/admin/add_user.php [L]
+RewriteRule ^admin/delete_pc/([0-9]+)$ /wol/admin/delete_pc.php?id=$1 [L,QSA]
+RewriteRule ^admin/edit_pc/([0-9]+)$ /wol/admin/edit_pc.php?id=$1 [L,QSA]
+
+
+# Главная панель
+RewriteRule ^login/?$ /wol/login.php [L]
+RewriteRule ^logout/?$ /wol/logout.php [L]
+RewriteRule ^panel/?$ /wol/index.php [L]
+
+## Запрет прямого доступа к PHP-файлам
+#RewriteCond %{THE_REQUEST} /wol/(admin|includes)/.*\.php [NC]
+#RewriteRule ^ - [F,L]
